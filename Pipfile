@@ -4,6 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+<<<<<<< HEAD
+=======
+flask = "*"
+sqlalchemy-serializer = "*"
+faker = "*"
+>>>>>>> 1d715f35623791af1dbdb51b9871b06800193b1b
 
 [dev-packages]
 
