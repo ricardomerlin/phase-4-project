@@ -40,6 +40,13 @@ function App () {
         _getPlaylist(token);
       })
 
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const player = new Spotify.Player({
+          name: 'Web Playback SDK Quick Start Player',
+          getOAuthToken: cb => { cb(clientId); }
+        });
+      }
+
     const [songs, setSongs] = useState([])
 
     // useEffect(()=>{
