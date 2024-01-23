@@ -3,6 +3,7 @@
     {
       "id": 1,
       "username": "RicardoMoney23",
+      "password": "donkey123",
       "preferred_genres": [
         "Rap",
         "Rock",
@@ -37,6 +38,7 @@
     {
       "id": 2,
       "username": "RicardoMoney23",
+      "password": "donkey123",
       "preferred_genres": [
         "Rap",
         "Rock",
@@ -67,37 +69,6 @@
           "genre": "Rap"
         }
       ]
-    },
-    {
-      "username": "Ricardo",
-      "preferred_genres": "",
-      "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
-      "posts": [],
-      "id": 3
-    },
-    {
-      "username": "Ricardo",
-      "preferred_genres": [
-        "Singing",
-        "Tejano music",
-        "Folk music",
-        "Country music",
-        "Popular music",
-        "Industrial music"
-      ],
-      "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
-      "posts": [],
-      "id": 4
-    },
-    {
-      "username": "ric",
-      "preferred_genres": [
-        "Blues",
-        "Electronica"
-      ],
-      "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
-      "posts": [],
-      "id": 5
     }
   ]
 }

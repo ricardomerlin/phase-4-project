@@ -5,10 +5,7 @@ function CreateProfile() {
   const [username, setUsername] = useState('');
   const [genres, setGenres] = useState([]);
   const [profilePic, setProfilePic] = useState('')
-
-  function user(e) {
-    setUsername(e.target.value);
-  }
+  const [password, setPassword] = useState('')
 
   function toggleGenre(genre) {
     if (genres.includes(genre)) {
@@ -27,6 +24,7 @@ function CreateProfile() {
       },
       body: JSON.stringify({
         "username": username,
+        "password": password,
         "preferred_genres": genres,
         "profile_pic": profilePic,
         "posts": []
@@ -96,7 +94,15 @@ function CreateProfile() {
           name='username'
           placeholder='Enter desired username'
           className='username-input'
-          onChange={user}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <h3>Enter a password</h3>
+        <input
+          type='text'
+          name='password'
+          placeholder='Enter desired password'
+          className='password-input'
+          onChange={(e) => setPassword(e.target.value)}
         />
         <h3>Select your favorite genres of music</h3>
         <div className='genreScrollMenu'>
