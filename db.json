@@ -1,64 +1,74 @@
 {
-    "profiles": [
+  "profiles": [
+    {
+      "id": 1,
+      "username": "RicardoMoney23",
+      "password": "donkey123",
+      "preferred_genres": [
+        "Rap",
+        "Rock",
+        "Jazz"
+      ],
+      "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
+      "posts": [
         {
-            "id": 1,
-            "username": "RicardoMoney23",
-            "preferred_genres": ["Rap", "Rock", "Jazz"],
-            "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
-            "posts": [
-                {
-                "id": 1,
-                "song_title": "I'm Not in Love",
-                "artist_name": "10cc",
-                "likes": 0,
-                "comments": [
-                    "This is the first comment on this post",
-                    "This is the second comment on this post"
-                    ],
-                "genre": "Soft rock"
-                },
-                {
-                "id": 2,
-                "song_title": "Stronger",
-                "artist_name": "Kanye West",
-                "likes": 0,
-                "comments": [
-                    "This is the first comment on this post",
-                    "This is the second comment on this post"
-                    ],
-                "genre": "Rap"
-                }
-            ]
+          "id": 1,
+          "song_title": "I'm Not in Love",
+          "artist_name": "10cc",
+          "likes": 0,
+          "comments": [
+            "This is the first comment on this post",
+            "This is the second comment on this post"
+          ],
+          "genre": "Soft rock"
         },
         {
-            "id": 1,
-            "username": "RicardoMoney23",
-            "preferred_genres": ["Rap", "Rock", "Jazz"],
-            "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
-            "posts": [
-                {
-                "id": 3,
-                "song_title": "I'm Not in Love",
-                "artist_name": "10cc",
-                "likes": 0,
-                "comments": [
-                    "This is the first comment on this post",
-                    "This is the second comment on this post"
-                    ],
-                "genre": "Soft rock"
-                },
-                {
-                "id": 4,
-                "song_title": "Stronger",
-                "artist_name": "Kanye West",
-                "likes": 0,
-                "comments": [
-                    "This is the first comment on this post",
-                    "This is the second comment on this post"
-                    ],
-                "genre": "Rap"
-                }
-            ]
+          "id": 2,
+          "song_title": "Stronger",
+          "artist_name": "Kanye West",
+          "likes": 0,
+          "comments": [
+            "This is the first comment on this post",
+            "This is the second comment on this post"
+          ],
+          "genre": "Rap"
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "username": "RicardoMoney23",
+      "password": "donkey123",
+      "preferred_genres": [
+        "Rap",
+        "Rock",
+        "Jazz"
+      ],
+      "profile_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QxdiOtwYr3BxEreE9VA9ysuRu28Gr99RO4oDudettrZ_9_sM",
+      "posts": [
+        {
+          "id": 3,
+          "song_title": "I'm Not in Love",
+          "artist_name": "10cc",
+          "likes": 0,
+          "comments": [
+            "This is the first comment on this post",
+            "This is the second comment on this post"
+          ],
+          "genre": "Soft rock"
+        },
+        {
+          "id": 4,
+          "song_title": "Stronger",
+          "artist_name": "Kanye West",
+          "likes": 0,
+          "comments": [
+            "This is the first comment on this post",
+            "This is the second comment on this post"
+          ],
+          "genre": "Rap"
+        }
+      ]
+    }
+  ]
 }

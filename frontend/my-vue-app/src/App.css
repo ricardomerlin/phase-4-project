@@ -1,0 +1,10 @@
+.genreScrollMenu {
+    max-height: 15vh; /* Set the maximum height of the menu */
+    overflow-y: auto; /* Enable vertical scrolling
+    border: 20px; */
+    border-color: black;
+}
+
+.scrollContainer {
+    padding: 5px; /* Optional padding for better visual appearance */
+}
