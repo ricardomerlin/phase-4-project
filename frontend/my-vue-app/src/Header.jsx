@@ -23,9 +23,16 @@ function Header() {
                 Profile
                 </NavLink>
                 :
-                <NavLink id='create' to="/profile">
+                <NavLink id='create' to="/login">
                 Sign in
                 </NavLink>
+                }
+                {loggedIn ?
+                <NavLink id='create' to="/profile">
+                Logout
+                </NavLink>
+                :
+                null
                 }
             </nav>
         </div>

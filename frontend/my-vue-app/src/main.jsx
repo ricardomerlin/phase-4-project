@@ -7,7 +7,9 @@ import LikedSongs from './LikedStocks.jsx'
 import Feed from './feed.jsx'
 import SearchBar from './SearchBar.jsx'
 import UserProfile from './UserProfile.jsx'
-
+import Login from './Login.jsx'
+import ProfilePage from './ProfilePage.jsx'
+import CreateProfilePage from './CreateProfile.jsx'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -19,7 +21,7 @@ const routes = createBrowserRouter([
       children: [
         {
           path: "/",
-          element: <WelcomePage />,
+          element: <Login />,
         },
         {
           path: "/liked-songs",
@@ -40,8 +42,16 @@ const routes = createBrowserRouter([
           element: <Feed/>
         },
         {
+          path: "/login",
+          element: <Login />
+        },
+        {
           path: "/profile",
-          element: <CreateProfile />
+          element: <ProfilePage />
+        },
+        {
+          path: "/createprofile",
+          element: <CreateProfilePage />
         }
       ]
     }]);

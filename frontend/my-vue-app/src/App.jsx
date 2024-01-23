@@ -3,6 +3,7 @@ import {Outlet} from "react-router-dom"
 import WelcomePage from "./WelcomePage";
 import { useEffect, useState } from "react";
 
+
 function App () {
 
     const clientSecret = '3634f643df5142cda8f7c01a3eafc3b9'

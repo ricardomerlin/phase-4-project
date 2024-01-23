@@ -1,6 +1,6 @@
 
 
-function profileDisplay() {
+function ProfilePage() {
 
     function getProfile() {
         fetch 
@@ -8,9 +8,9 @@ function profileDisplay() {
 
     return (
         <div>
-
+            <h1>This is the Profile page</h1>
         </div>
     )
 }
 
-export default profileDisplay
+export default ProfilePage
