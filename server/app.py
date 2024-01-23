@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from models import db, Profile, Post
+from models import db, Profile, Post, Comment
 
 
 app = Flask(__name__)
@@ -20,6 +20,8 @@ def index():
 
 @app.get('/profiles')
 def get_profiles():
+    # import pdb
+    # pdb.set_trace()
     profiles = Profile.query.all()
     return [p.to_dict() for p in profiles]
 

@@ -4,9 +4,10 @@ import CreateProfile from './CreateProfile.jsx'
 import App from './App.jsx'
 import WelcomePage from './WelcomePage.jsx'
 import LikedSongs from './LikedStocks.jsx'
-import Feed from './Feed.jsx'
+import Feed from './feed.jsx'
 import SearchBar from './SearchBar.jsx'
 import UserProfile from './UserProfile.jsx'
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -37,6 +38,10 @@ const routes = createBrowserRouter([
         {
           path: "/feed",
           element: <Feed/>
+        },
+        {
+          path: "/createprofile",
+          element: <CreateProfile />
         }
       ]
     }]);

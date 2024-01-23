@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import React from 'react'
 import { NavLink } from "react-router-dom";
 
 function Header() {
+
+    const [loggedIn, setLoggedIn] = useState(False)
+
     return (
         <div id='header'>
             <nav>
@@ -16,6 +20,9 @@ function Header() {
                 </NavLink>
                 <NavLink id="user" to="/user">
                     User
+                </NavLink>
+                <NavLink id='create' to="/createprofile">
+                    Create User Profile
                 </NavLink>
             </nav>
         </div>

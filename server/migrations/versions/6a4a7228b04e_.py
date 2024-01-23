@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 28a8ef855844
+Revision ID: 6a4a7228b04e
 Revises: 
-Create Date: 2024-01-23 11:16:46.352339
+Create Date: 2024-01-23 13:36:22.314418
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '28a8ef855844'
+revision = '6a4a7228b04e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,6 +21,7 @@ def upgrade():
     op.create_table('post_table',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('song_title', sa.String(), nullable=False),
+    sa.Column('artist_name', sa.String(), nullable=True),
     sa.Column('likes', sa.Integer(), nullable=False),
     sa.Column('genre', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
@@ -36,7 +37,7 @@ def upgrade():
     )
     op.create_table('comment_table',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('comment', sa.String(), nullable=True),
+    sa.Column('content', sa.String(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.Column('profile_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['post_id'], ['post_table.id'], name=op.f('fk_comment_table_post_id_post_table')),
