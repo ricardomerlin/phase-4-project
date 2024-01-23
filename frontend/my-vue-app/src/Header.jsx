@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
 
-    const [loggedIn, setLoggedIn] = useState(False)
+    const [loggedIn, setLoggedIn] = useState(0)
 
     return (
         <div id='header'>
@@ -21,9 +21,15 @@ function Header() {
                 <NavLink id="user" to="/user">
                     User
                 </NavLink>
+                {loggedIn ?
                 <NavLink id='create' to="/createprofile">
-                    Create User Profile
+                Profile
                 </NavLink>
+                :
+                <NavLink id='create' to="/createprofile">
+                Create User Profile
+                </NavLink>
+                }
             </nav>
         </div>
     )
