@@ -40,7 +40,7 @@ const routes = createBrowserRouter([
           element: <Feed/>
         },
         {
-          path: "/createprofile",
+          path: "/profile",
           element: <CreateProfile />
         }
       ]

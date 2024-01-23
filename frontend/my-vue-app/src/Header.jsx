@@ -18,16 +18,13 @@ function Header() {
                 <NavLink id="liked" to="/liked-songs">
                     Liked Songs
                 </NavLink>
-                <NavLink id="user" to="/user">
-                    User
-                </NavLink>
                 {loggedIn ?
-                <NavLink id='create' to="/createprofile">
+                <NavLink id='create' to="/profile">
                 Profile
                 </NavLink>
                 :
-                <NavLink id='create' to="/createprofile">
-                Create User Profile
+                <NavLink id='create' to="/profile">
+                Sign in
                 </NavLink>
                 }
             </nav>
