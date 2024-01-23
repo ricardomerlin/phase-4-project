@@ -18,6 +18,7 @@ class Profile(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String, nullable = False)
+    password = db.Column(db.String)
     liked_genres = db.Column(db.String)
     liked_posts = db.Column(db.String)
 
