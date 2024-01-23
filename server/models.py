@@ -54,6 +54,7 @@ class Profile(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Profile {self.id}: {self.username}>'
 
+# p = Profile(username='test', password='test', liked_genres='test', profile_pic='test')
 
 
 class Post(db.Model, SerializerMixin):
