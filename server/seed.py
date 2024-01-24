@@ -10,7 +10,6 @@ def create_profile():
     for _ in range(40):
         p = Profile(
             username = fake.name(),
-            password = fake.word(),
             liked_genres = fake.name(),
             liked_posts = randint(0, 200),
             profile_pic = fake.word()
@@ -24,7 +23,8 @@ def create_post():
         po = Post(
             song_title = fake.name(),
             likes = randint(0, 30),
-            genre = fake.name()
+            genre = fake.name(),
+            profile_id = rc([profile.id for profile in profiles])
         )
         posts.append(po)
     return posts
@@ -45,6 +45,7 @@ if __name__ == '__main__':
         print('Clearing database...')
         Profile.query.delete()
         Post.query.delete()
+        Comment.query.delete()
 
         print('Seeding profiles')
         profiles = create_profile()

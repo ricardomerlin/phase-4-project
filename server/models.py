@@ -40,7 +40,6 @@ class Profile(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String, nullable = False)
-    password = db.Column(db.String)
     liked_genres = db.Column(db.String)
     liked_posts = db.Column(db.String)
     profile_pic = db.Column(db.String)
@@ -66,8 +65,12 @@ class Post(db.Model, SerializerMixin):
     likes = db.Column(db.Integer, nullable = False)
     genre = db.Column(db.String)
 
+    profile_id = db.Column(db.Integer, ForeignKey('profile_table.id'))
+
 
     comments = db.relationship('Comment', back_populates = 'post')
+
+    
 
     serialize_rules = ['-comments.post']
 
