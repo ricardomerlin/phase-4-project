@@ -1,34 +1,39 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
 
-function Login() {
+function Login({}) {
 
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    const setSignup = () => {
-        // Navigate to createProfilePage
-        navigate('/createprofile');
-    }
+    // function loginInfoTransport() {
+    //     bringUsernameUp(username)
+    //     bringPasswordUp(password)
+    // }
+
 
     return(
         <div>
-            <h2>Username</h2>
-            <input
-            type='text'
-            name='username'
-            className='username-input'
-            onChange={(e) => setUsername(e.target.value)}
-            />
-            <h3>Password</h3>
-            <input
-            type='text'
-            name='password'
-            // placeholder='Enter desired password'
-            className='password-input'
-            onChange={(e) => setPassword(e.target.value)}
-            />
-            <div>
-                <button className = 'signup-button' onClick = {setSignup}>New user? Create a new account here.</button>
-            </div>
+            <h1>Login with Spotify</h1>
+            <h2>Email Address</h2>
+            <form >
+                <input
+                type='text'
+                name='username'
+                className='username-input'
+                onChange={(e) => setUsername(e.target.value)}
+                />
+                <h3>Password</h3>
+                <input
+                type='text'
+                name='password'
+                // placeholder='Enter desired password'
+                className='password-input'
+                onChange={(e) => setPassword(e.target.value)}
+                />
+                <div>
+                    <button className = 'signup-button'>New user? Create a new account here.</button>
+                </div>
+            </form>
         </div>
     )
 
