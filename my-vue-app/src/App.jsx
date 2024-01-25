@@ -1,10 +1,9 @@
 import axios from "axios";
 import Header from "./Header";
 import {Outlet, useLocation} from "react-router-dom"
-import WelcomePage from "./WelcomePage";
 import { useEffect, useState } from "react";
 import SpotifyPlayer from "./Player";
-import HandleLogin from "./HandleLogin";
+import Login from "./Login";
 
 function App () {
     
@@ -22,7 +21,7 @@ function App () {
     const [token,setToken] = useState('')
     const [playlists, setPlaylists] = useState(null)
 
-    const handleLogin = () => {
+    const handleSpotifyLogin = () => {
         window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${encodeURIComponent(SCOPES)}`;
     };
     
@@ -74,6 +73,10 @@ function App () {
 
     const [loggedIn, setLoggedIn] = useState(false)
 
+    const handleLoginStateChange = (newState) => {
+        setLoggedIn(newState)
+    }
+
     console.log(loggedIn)
 
     useEffect(()=>{
@@ -100,15 +103,14 @@ function App () {
 
     return !token ? (
         <>
-        <HandleLogin />
-        <button onClick={handleLogin}>Login with Spotify</button>
+        <Login loggedIn={loggedIn} setLoggedIn={handleLoginStateChange} handleSpotifyLogin={handleSpotifyLogin}/>
         </>
     ) : (
         <>
-            < Header loggedIn={loggedIn}/>
+            < Header/>
             <SpotifyPlayer accessToken={token}/>
             <div className="main">
-                <Outlet context={{CLIENT_ID, handleSearch, search, setFilter, filter,loggedIn, setLoggedIn}}/>
+                <Outlet context={{CLIENT_ID, handleSearch, search, setFilter, filter}}/>
             </div>
         </>
       )

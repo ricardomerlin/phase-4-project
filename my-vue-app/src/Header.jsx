@@ -8,13 +8,6 @@ import { useOutletContext } from 'react-router-dom';
 function Header({ loggedIn }) {
 
 
-            
-            const handleLogin = () => {
-              // Your login logic here
-              // After successful login, set loggedIn to true
-                setLoggedIn(true);
-            }
-
             // Function to handle logout
             const handleLogout = () => {
               // Your logout logic here
@@ -23,14 +16,9 @@ function Header({ loggedIn }) {
                 window.check = undefined
             }
 
-
-
-
             
     return (
         <div id='header'>
-            {loggedIn ? (
-            // Render navigation links when logged in
             <nav>
                 <NavLink id="search" to="/search">
                     Search
@@ -48,9 +36,6 @@ function Header({ loggedIn }) {
                     Logout
                 </NavLink>
             </nav>
-            ) : (
-                null
-            )}
         </div>
     );
 }

@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react'
-import { useOutletContext } from "react-router-dom";
 
-function Login() {
+function Login({loggedIn,setLoggedIn, handleSpotifyLogin}) {
 
-    const [loggedIn, setLoggedIn] = useOutletContext()
+    
     const [showForm, setShowForm] = useState(true);
     const [profiles, setProfiles] = useState([])
     const [username, setUsername] = useState()
@@ -28,7 +27,7 @@ function Login() {
             const user = profiles[i].username;
             if (user == username) {
                 setLoggedIn(true)
-                setLoggedIn(true)
+
                 console.log('check user is working')
                 window.check = profiles[i].id
             }}
@@ -43,6 +42,11 @@ function Login() {
         // Navigate to createProfilePage
         navigate('/createprofile');
         handleSignupClick()
+    }
+
+    function handleClick(){
+        setLoggedIn(true)
+        handleSpotifyLogin()
     }
 
 
@@ -61,7 +65,7 @@ function Login() {
         <div>
             <button 
             className = 'signup-button'
-            onClick = {setSignup} 
+            onClick = {()=>handleClick()} 
             >New user? Login with spotify here
             </button>
         </div>
