@@ -2,16 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import CreateProfile from './CreateProfile.jsx'
 import App from './App.jsx'
-import WelcomePage from './WelcomePage.jsx'
 import LikedSongs from './LikedStocks.jsx'
 import Feed from './feed.jsx'
 import SearchBar from './SearchBar.jsx'
 import UserProfile from './UserProfile.jsx'
-import Login from './Login.jsx'
 import ProfilePage from './ProfilePage.jsx'
 import CreateProfilePage from './CreateProfile.jsx'
+import Header from './Header.jsx'
+import Login from './Login.jsx'
+import { useState } from 'react'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+
 
 const routes = createBrowserRouter([
     {
@@ -22,6 +25,10 @@ const routes = createBrowserRouter([
         {
           path: "/",
           element: <Login />,
+        },
+        {
+          path: "/logout",
+          element: <Login />
         },
         {
           path: "/liked-songs",
@@ -42,16 +49,12 @@ const routes = createBrowserRouter([
           element: <Feed />
         },
         {
-          path: "/login",
-          element: <Login />
-        },
-        {
           path: "/profile",
           element: <ProfilePage />
         },
         {
           path: "/createprofile",
-          element: <CreateProfilePage />
+          element: <CreateProfile />
         }
       ]
     }]);

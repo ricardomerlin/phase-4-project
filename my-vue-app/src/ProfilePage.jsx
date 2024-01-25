@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router"
 
 function ProfilePage({  }) {
@@ -8,15 +8,20 @@ function ProfilePage({  }) {
 
     // // I need profID to be passed down
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/profiles/' + profID)
-    //     .then(res => res.json())
-    //     .then(data => setProfile(data))
-    // }, [profId])
+    useEffect(() => {
+        fetch('http://127.0.0.1:5555/profiles/' + window.check)
+        .then(res => res.json())
+        .then(data => {
+            setProfile(data)
+            console.log(data)
+        })
+    }, [])
 
     return (
         <div>
-            <h1>This is the Profile page</h1>
+            <img src={profile.profile_pic}></img>
+            <h1>{profile.username}</h1>
+            <h1>{profile.liked_genres}</h1>
         </div>
     )
 }

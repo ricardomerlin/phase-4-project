@@ -1,7 +1,7 @@
 import Header from "./Header";
 import {Outlet} from "react-router-dom"
-import WelcomePage from "./WelcomePage";
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 
 function App () {
@@ -53,20 +53,19 @@ function App () {
     //     fetch('')
     // },[])
 
-    const [loggedIn, setLoggedIn] = useState(0)
-    const [profID, setProfId] = useState(0)
-
+    const [loggedIn, setLoggedIn] = useState(false)
 
     console.log(loggedIn)
-    
+
     return (
         <>
-            < Header/>
+            <Header loggedIn={loggedIn}/>
             <div className="main">
-                <Outlet context={
-                    [loggedIn, setLoggedIn]
+                <Outlet context={[
+                    loggedIn, setLoggedIn
+                    // [username, setUsername]
                     // [profId, setProfId]
-                    }/>
+                    ]}/>
             </div>
         </>
       )

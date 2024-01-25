@@ -1,34 +1,17 @@
-import { useNavigate } from 'react-router-dom';
-import { useOutletContext } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useOutletContext } from "react-router-dom";
 
 function Login() {
 
-    const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
-    const [profile, setProfiles] = useState('')
-
-    const [profId, setProfId] = useOutletContext(0)
-
-
-    console.log(username)
-    // console.log(password)
+    const [loggedIn, setLoggedIn] = useOutletContext()
+    const [showForm, setShowForm] = useState(true);
+    const [profiles, setProfiles] = useState([])
+    const [username, setUsername] = useState()
 
     const navigate = useNavigate();
 
-    const setSignup = () => {
-        // Navigate to createProfilePage
-        navigate('/createprofile');
-    }
-
-    const [loggedIn, setLoggedIn] = useOutletContext();
-
-    // function changeLogStatus() {
-    //     for :
-    //         setLoggedIn(1)
-    //     else:
-    //         setLoggedIn(0)
-    // }
+    const poo = 0
 
     useEffect(() => {
         fetch('http://127.0.0.1:5555/profiles')
@@ -36,22 +19,54 @@ function Login() {
         .then(data => (
             setProfiles(data)
             )
-    )}, [])
+        )}, [])
 
-    // useEffect(() => {
-    //     for (const profile of profiles):
-    //         if profile.username == username:
-    //         console.log(username)
-    // }, [profiles])
+    function checkUser(e) {
+        e.preventDefault()
+        for (let i = 0; i < profiles.length; i++) {
+                // Access each profile using profiles[i]
+            const user = profiles[i].username;
+            if (user == username) {
+                setLoggedIn(true)
+                setLoggedIn(true)
+                console.log('check user is working')
+                window.check = profiles[i].id
+            }}
+        }
+
+    const handleSignupClick = () => {
+        setShowForm(false);
+        // Additional logic for signup if needed
+    }
+
+    const setSignup = () => {
+        // Navigate to createProfilePage
+        navigate('/createprofile');
+        handleSignupClick()
+    }
 
 
-
-    return(
+    return (
+    <div style={{ display: loggedIn ? 'none' : 'block' }}>
+        <h2>Username</h2>
+        <form onSubmit={checkUser}>
+            <input
+            type='text'
+            name='username'
+            className='username-input'
+            onChange={(e) => setUsername(e.target.value)}
+            />
+            <button>Login</button>
+        </form>
         <div>
-            <button className = 'signup-button' onClick = {setSignup}>New user? Login with spotify here</button>
+            <button 
+            className = 'signup-button'
+            onClick = {setSignup} 
+            >New user? Login with spotify here
+            </button>
         </div>
+    </div>
     )
-
 }
 
 export default Login

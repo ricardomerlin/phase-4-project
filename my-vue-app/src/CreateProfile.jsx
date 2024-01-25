@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import './App.css'
+import { useOutletContext } from 'react-router-dom';
+
 
 function CreateProfile() {
   const [username, setUsername] = useState('');
   const [genres, setGenres] = useState([]);
   const [profilePic, setProfilePic] = useState('')
+  const [loggedIn, setLoggedIn] = useOutletContext()
+
   // const [password, setPassword] = useState('')
+
+  console.log(window.check)
 
   function toggleGenre(genre) {
     if (genres.includes(genre)) {
@@ -17,19 +23,36 @@ function CreateProfile() {
 
   function handleProfileSubmit(e) {
     e.preventDefault();
-    fetch ('http://localhost:5555/profiles', {
+    
+    console.log(`Profile username: ${username}.`)
+    console.log(`Profile pic URL: ${profilePic}`)
+
+    fetch ('http://127.0.0.1:5555/profiles', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "username": username,
-        "preferred_genres": genres,
-        "profile_pic": profilePic,
-        "posts": []
+        'username': username,
+        'profile_pic': profilePic
       })
     })
-  }
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Handle the successful response, e.g., show a success message or redirect
+      console.log('Profile created successfully:', data);
+    })
+    .catch((error) => {
+      // Handle errors, e.g., show an error message
+      console.error('Error creating profile:', error);
+    });
+}
+  
 
   // List of music genres
   const allGenres = [
@@ -103,25 +126,6 @@ function CreateProfile() {
           className='password-input'
           onChange={(e) => setPassword(e.target.value)}
         /> */}
-        <h3>Select your favorite genres of music</h3>
-        <div className='genreScrollMenu'>
-          {/* Scrollable menu for genres */}
-          <div className='scrollContainer'>
-          {allGenres.map((genre) => (
-            <div key={genre}>
-              <label>
-              <input
-                type='checkbox'
-                value={genre}
-                checked={genres.includes(genre)}
-                onChange={() => toggleGenre(genre)}
-              />
-              {genre}
-            </label>
-            </div>
-          ))}
-        </div>
-        </div>
         <h3>Link a profile picture</h3>
         <input
           type='text'

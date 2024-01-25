@@ -28,16 +28,25 @@ def get_profiles():
     profiles = Profile.query.all()
     return [p.to_dict() for p in profiles]
 
+@app.get('/profiles/<int:id>')
+def get_profile_by_id(id):
+    profile = db.session.get(Profile, id)
+    if not profile:
+        return {'Error': 'Profile not found.'}
+    profile_dict = profile.to_dict()
+    # publisher = db.session.get(Publisher, id).filter_by(author_id = id).all()
+    return profile_dict, 202
+
 @app.get('/posts')
 def get_posts():
     posts = Post.query.all()
     return [p.to_dict(rules = []) for p in posts]
 
 @app.get('/posts/<int:id>')
-def get_author_by_id(id):
+def get_post_by_id(id):
     post = db.session.get(Post, id)
     if not post:
-        return {'Error': 'Author not found.'}
+        return {'Error': 'Post not found.'}
     post_dict = post.to_dict()
     # publisher = db.session.get(Publisher, id).filter_by(author_id = id).all()
     return post_dict, 202
@@ -50,16 +59,25 @@ def get_comments():
 
 @app.post('/profiles')
 def post_new_profile():
+    print("we made it")
     try:
         data = request.json
+        print("data unpacked")
+        print(f"\n>> Our current data: \n{data}")
+        print(f"\n>> Current data's type: {type(data)}")
+
         p = Profile(
-            username = data.get('name'),
-            liked_genres = data.get('liked_genres'),
-            liked_posts = data.get('liked_posts'),
-            profile_pic = data.get('profile_pic')
+            username = data.get("username"),
+            profile_pic = data.get("profile_pic")
         )
+
+        print(p)
+
+        print("profile object instantiated")
         db.session.add(p)
+        print("new profile added to database")
         db.session.commit()
+        print("new profile committed to database for storage")
 
         return p.to_dict(), 201
     except Exception:
