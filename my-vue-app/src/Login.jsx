@@ -29,11 +29,9 @@ function Login() {
     //     else:
     //         setLoggedIn(0)
     // }
-    setLoggedIn(80)
-    console.log(loggedIn)
 
     useEffect(() => {
-        fetch('http://localhost:3000/profiles')
+        fetch('http://127.0.0.1:5555/profiles')
         .then(res => res.json())
         .then(data => (
             setProfiles(data)
@@ -50,26 +48,7 @@ function Login() {
 
     return(
         <div>
-            <h2>Username</h2>
-            <form>
-                <input
-                type='text'
-                name='username'
-                className='username-input'
-                onChange={(e) => setUsername(e.target.value)}
-                />
-                <h3>Password</h3>
-                <input
-                type='text'
-                name='password'
-                // placeholder='Enter desired password'
-                className='password-input'
-                onChange={(e) => setPassword(e.target.value)}
-                />
-            </form>
-            <div>
-                <button className = 'signup-button' onClick = {setSignup}>New user? Create a new account here.</button>
-            </div>
+            <button className = 'signup-button' onClick = {setSignup}>New user? Login with spotify here</button>
         </div>
     )
 

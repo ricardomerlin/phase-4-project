@@ -39,7 +39,7 @@ class Profile(db.Model, SerializerMixin):
     __tablename__ = 'profile_table'
 
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String, nullable = False)
+    username = db.Column(db.String, unique = True, nullable = False)
     liked_genres = db.Column(db.String)
     liked_posts = db.Column(db.String)
     profile_pic = db.Column(db.String)
@@ -73,6 +73,7 @@ class Post(db.Model, SerializerMixin):
     
 
     serialize_rules = ['-comments.post']
+
 
     def __repr__(self):
         return f'<Post {self.id}: {self.song_title}>'
