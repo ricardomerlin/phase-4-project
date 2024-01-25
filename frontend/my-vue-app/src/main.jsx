@@ -4,9 +4,10 @@ import CreateProfile from './CreateProfile.jsx'
 import App from './App.jsx'
 import WelcomePage from './WelcomePage.jsx'
 import LikedSongs from './LikedStocks.jsx'
-import Feed from './feed.jsx'
+import Feed from './Feed.jsx'
 import SearchBar from './SearchBar.jsx'
 import UserProfile from './UserProfile.jsx'
+import HandleLogin from './HandleLogin.jsx'
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -42,7 +43,12 @@ const routes = createBrowserRouter([
         {
           path: "/createprofile",
           element: <CreateProfile />
+        },
+        {
+          path: "/handle-login",
+          element: <HandleLogin />
         }
+
       ]
     }]);
 

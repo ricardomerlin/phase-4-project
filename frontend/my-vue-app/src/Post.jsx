@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Post({ profile }) {
+function Post({ profile}) {
+
     const mappedPosts = profile.posts.map(post => (
         <div key={post.id}>
             <h1>Song Title: {post.song_title}</h1>
@@ -13,6 +14,7 @@ function Post({ profile }) {
                     <li key={index}>{comment}</li>
                 ))}
             </ul>
+            <button id="togglePlay">Toggle Play</button>
         </div>
     ));
 

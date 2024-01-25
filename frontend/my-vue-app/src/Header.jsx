@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
 
-    const [loggedIn, setLoggedIn] = useState(False)
+    // const [loggedIn, setLoggedIn] = useState(False)
 
     return (
         <div id='header'>

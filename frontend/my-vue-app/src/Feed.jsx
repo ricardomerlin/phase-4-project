@@ -8,7 +8,10 @@ function Feed() {
     useEffect(() => {
         fetch('http://localhost:3000/profiles')
         .then(res => res.json())
-        .then(data => setProfiles(data))
+        .then(data => {
+            console.log(data)
+            setProfiles(data)
+        })    
     }, [])
 
 

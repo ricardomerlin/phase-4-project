@@ -69,6 +69,14 @@
           "genre": "Rap"
         }
       ]
+    },
+    {
+      "username": "",
+      "password": "",
+      "preferred_genres": [],
+      "profile_pic": "",
+      "posts": [],
+      "id": 3
     }
   ]
 }
