@@ -15,11 +15,15 @@ function App () {
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
     const RESPONSE_TYPE = 'token';
     const SCOPES = 'user-read-private user-read-email user-library-read streaming';
-
+    
     const [search, setSearch] = useState("")
     const [filter,setFilter] = useState('')
     const [token,setToken] = useState('')
     const [playlists, setPlaylists] = useState(null)
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [songs, setSongs] = useState([])
+    const [searchedData,setSearchedData]= useState([])
+    const [userData, setUserData] = useState([])
 
     const handleSpotifyLogin = () => {
         window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${encodeURIComponent(SCOPES)}`;
@@ -36,6 +40,7 @@ function App () {
         })
     } 
 
+// Fetch User Playlists
     useEffect(()=>{
         if (token) {
             setClientToken(token); 
@@ -50,7 +55,21 @@ function App () {
         }
     },[token])
 
-    const [songs, setSongs] = useState([])
+// Fetch User Info
+    useEffect(()=>{
+        if (token) {
+            setClientToken(token); 
+            apiClient.get('me',{
+                headers:{
+                    'Authorization' : `Bearer ${token}`
+                }
+            }).then(function (res){
+                console.log(res.data)
+                setUserData(res.data)
+            }).catch(error => console.log(error));
+        }
+    },[token])
+
 
     useEffect(()=>{  
         const token = window.localStorage.getItem('token')
@@ -71,31 +90,43 @@ function App () {
         return replacedString;
     }
 
-    const [loggedIn, setLoggedIn] = useState(false)
 
     const handleLoginStateChange = (newState) => {
         setLoggedIn(newState)
     }
 
-    console.log(loggedIn)
-
     useEffect(()=>{
         
-        fetch(`https://api.spotify.com/v1/search?q=${replaceSpacesWithPlus(search)}&type=${filter}`,{
+        fetch(`https://api.spotify.com/v1/search?q=${replaceSpacesWithPlus(search)}&type=${filter}&limit=50`,{
             headers:{
                 'Authorization' : `Bearer ${token}`
             }
-        }).then((res)=>{
-            console.log(res)
-            console.log(search)
-            console.log(filter)
+        }).then((res)=>res.json())
+        .then((data)=>{
+            if(filter == 'album'){
+                setSearchedData(data.albums.items)
+                console.log(data.albums.items)
+            } else if (filter == 'artist'){
+                setSearchedData(data.artists.items)
+                console.log(data.artists.items)
+            } else if (filter == 'playlist'){
+                setSearchedData(data.playlists.items)
+                console.log(data.playlists.items)
+            } else {
+                setSearchedData(data.tracks.items)
+                console.log(data.tracks.items)
+            }
+    
         })
     },[search])
 
-
-    // const filteredSongs = search.trim() === ""
-    // ? []
-    // : songs.filter(song => song.name.toLowerCase().includes(search.toLowerCase()))
+    function handleSearchFetch(href){
+        fetch(`${href}`,{
+            headers:{
+                'Authorization' : `Bearer ${token}`
+            }
+        })
+    }
 
     function handleSearch(searchTerm){
         setSearch(searchTerm)
@@ -106,13 +137,14 @@ function App () {
         <Login loggedIn={loggedIn} setLoggedIn={handleLoginStateChange} handleSpotifyLogin={handleSpotifyLogin}/>
         </>
     ) : (
-        <>
+        <div id='main'>
+            <div id = 'header'>
             < Header/>
-            <SpotifyPlayer accessToken={token}/>
-            <div className="main">
-                <Outlet context={{CLIENT_ID, handleSearch, search, setFilter, filter}}/>
             </div>
-        </>
+            <div className="main">
+                <Outlet context={{CLIENT_ID, handleSearch, search, setFilter, filter, playlists, searchedData, userData}}/>
+            </div>
+        </div>
       )
 }
 

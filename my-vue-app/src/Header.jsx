@@ -18,25 +18,38 @@ function Header({ loggedIn }) {
 
             
     return (
-        <div id='header'>
-            <nav>
-                <NavLink id="search" to="/search">
-                    Search
-                </NavLink>
-                <NavLink id="feed" to="/feed">
-                    Feed
-                </NavLink>
-                <NavLink id="liked" to="/liked-songs">
-                    Liked Songs
-                </NavLink>
-                <NavLink id='create' to="/profile">
-                    Profile
-                </NavLink>
-                <NavLink id='create' to="/logout" onClick={handleLogout}>
-                    Logout
-                </NavLink>
-            </nav>
-        </div>
+        <ul className="nav nav-pills">
+  <li className="nav-item">
+    <NavLink className="nav-link" exact to="/search">
+      Search
+    </NavLink>
+  </li>
+  <li className="nav-item">
+    <NavLink className="nav-link" exact to="/feed">
+      Feed
+    </NavLink>
+  </li>
+  <li className="nav-item">
+    <NavLink className="nav-link" exact to="/liked-songs">
+      Liked Songs
+    </NavLink>
+  </li>
+  <li className="nav-item">
+    <NavLink className="nav-link" exact to="/user">
+      Profile
+    </NavLink>
+  </li>
+  <li className="nav-item">
+    <NavLink
+      className="nav-link"
+      exact
+      to="/logout"
+      onClick={handleLogout}
+    >
+      Logout
+    </NavLink>
+  </li>
+</ul>
     );
 }
 

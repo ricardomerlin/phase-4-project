@@ -12,13 +12,13 @@ function Login({loggedIn,setLoggedIn, handleSpotifyLogin}) {
 
     const poo = 0
 
-    useEffect(() => {
-        fetch('http://127.0.0.1:5555/profiles')
-        .then(res => res.json())
-        .then(data => (
-            setProfiles(data)
-            )
-        )}, [])
+    // useEffect(() => {
+    //     fetch('http://127.0.0.1:5555/profiles')
+    //     .then(res => res.json())
+    //     .then(data => (
+    //         setProfiles(data)
+    //         )
+    //     )}, [])
 
     function checkUser(e) {
         e.preventDefault()
@@ -51,8 +51,7 @@ function Login({loggedIn,setLoggedIn, handleSpotifyLogin}) {
 
 
     return (
-    <div style={{ display: loggedIn ? 'none' : 'block' }}>
-        <h2>Username</h2>
+    <div id='login-container' style={{ display: loggedIn ? 'none' : 'block' }}>
         <form onSubmit={checkUser}>
             <input
             type='text'
@@ -62,11 +61,11 @@ function Login({loggedIn,setLoggedIn, handleSpotifyLogin}) {
             />
             <button>Login</button>
         </form>
-        <div>
+        <div id='login'>
             <button 
-            className = 'signup-button'
+            class="btn btn-outline-light"
             onClick = {()=>handleClick()} 
-            >New user? Login with spotify here
+            >Login with spotify here
             </button>
         </div>
     </div>

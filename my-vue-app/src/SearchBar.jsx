@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import App from "./App"
 import { useOutletContext} from "react-router-dom";
+import SearchCard from "./SearchCard";
 
 function SearchBar (){
 
@@ -8,6 +9,7 @@ function SearchBar (){
     const {handleSearch} = useOutletContext()
     const {setFilter} = useOutletContext()
     const {filter} = useOutletContext()
+    const {searchedData} = useOutletContext()
 
     function handleSearchChange(e){
         handleSearch(e.target.value)
@@ -17,17 +19,11 @@ function SearchBar (){
         setFilter(e.target.value)
     }
 
-    // const listSearch = filteredSongs.map((song)=>{
-    //     return <div>
-    //         <h1 className="search-results"onClick={() => handleClick(song)}>{song.name}</h1>
-    //     </div>
-    // })
-    
-
     return (
     <div>
         <div className="search-container">
             <div >
+                <div id='dropdown'>
                 <select onChange={handleOnChange} value={filter} name="day">
                     <option value="" disabled selected hidden>Choose filter</option>
                     <option value ='artist'>Artist</option>
@@ -41,8 +37,11 @@ function SearchBar (){
                 placeholder="Search by artist/track/album name..."
                 value={search}
                 />
+                </div>
                 <i className="search-box" />
-                {/* {listSearch} */}
+                <div id='search-container'>
+                {searchedData?.map((data)=><SearchCard key={data.id} data={data}/>)}
+                </div>
             </div>
         </div>
     </div>
